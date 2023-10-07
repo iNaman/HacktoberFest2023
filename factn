@@ -1,0 +1,27 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+rl.question('Enter a number to calculate its factorial: ', (input) => {
+  const num = parseInt(input);
+
+  if (isNaN(num)) {
+    console.log('Invalid input. Please enter a valid number.');
+    rl.close();
+    return;
+  }
+
+  const result = factorial(num);
+  console.log(`Factorial of ${num} is ${result}`);
+  rl.close();
+});
